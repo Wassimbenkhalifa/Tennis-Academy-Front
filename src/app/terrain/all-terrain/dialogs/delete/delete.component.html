@@ -1,0 +1,24 @@
+<div class="container">
+  <h3 mat-dialog-title>Etes vous sure?</h3>
+  <div mat-dialog-content>
+    <ul class="clearfix">
+      <li>
+        <p><span class="fw-bold"> ID: </span>{{data.idTerrain}}</p>
+      </li>
+      <li>
+        <p><span class="fw-bold"> Type: </span>{{data.type}}</p>
+      </li>
+      <li>
+        <p>
+          <span class="fw-bold">Label: </span>{{data.label}}
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div mat-dialog-actions class="mb-1">
+    <button mat-flat-button color="warn" [mat-dialog-close]="1" cdkFocusInitial>
+      Delete
+    </button>
+    <button mat-flat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+  </div>
+</div>

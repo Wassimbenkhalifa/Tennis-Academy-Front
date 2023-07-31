@@ -1,0 +1,226 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Ajouter Utilisateur</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/dashboard/main">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Utilisateur</a>
+            </li>
+            <li class="breadcrumb-item active">Ajouter</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="header">
+            <h2><strong> Informations de l'utilisateur</strong></h2>
+
+          </div>
+          <div class="body">
+            <form class="m-4" [formGroup]="utilisateurForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Prenom de l'tilisateur</mat-label>
+                    <input matInput formControlName="prenom" required>
+                    <mat-error *ngIf="utilisateurForm.get('prenom').hasError('required')">
+                      Le prenom est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Nom de l'utilisateur</mat-label>
+                    <input matInput formControlName="nom" required>
+                    <mat-error *ngIf="utilisateurForm.get('nom').hasError('required')">
+                      Le nom est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <!-- <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                      <mat-form-field class="example-full-width mb-3" appearance="fill">
+                      <mat-label>Nom du Terrain</mat-label>
+                      <mat-select formControlName="nom" required>
+                          <mat-option [value]="'dure'">
+                          Terrain dur
+                          </mat-option>
+                          <mat-option [value]="'terre'">
+                          Terrain terre battue
+                          </mat-option>
+                          <mat-option [value]="'Gazon'">
+                              Terrain Gazon
+                          </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="terrainForm.get('type').hasError('required')">
+                          Le type est obligatoire
+                      </mat-error>
+                      </mat-form-field>
+                </div> -->
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Tel. du Utilisateur</mat-label>
+                    <input matInput formControlName="telephone" type="number" required>
+                    <mat-error *ngIf="utilisateurForm.get('telephone').hasError('required')">
+                      Le telephone est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required>
+                    <mat-error
+                      *ngIf="utilisateurForm.get('email').hasError('email') && utilisateurForm.get('email').touched">
+                      Please enter a valid email address
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="username" required>
+                    <mat-error *ngIf="utilisateurForm.get('username').hasError('required')">
+                      Le username est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Addresse de l'utilisateur</mat-label>
+                    <input matInput formControlName="addresse" required>
+                    <mat-error *ngIf="utilisateurForm.get('addresse').hasError('required')">
+                      L'addresse est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Mot de pass</mat-label>
+                    <input matInput formControlName="password" type="password" required>
+                    <mat-error *ngIf="utilisateurForm.get('password').hasError('required')">
+                      mot de pass est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Re-Enter Password</mat-label>
+                    <input matInput formControlName="conformPassword" type="password" required>
+                    <mat-error *ngIf="utilisateurForm.get('conformPassword').hasError('required')">
+                      Retapez votre mot de pass
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Date naissance</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dateNaissance" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="utilisateurForm.get('dateNaissance').hasError('required')">
+                      SVP selectionnez votre date de naissance
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2" style="padding: 8px;">
+
+                  <mat-slide-toggle formControlName="verified" [checked]="utilisateurForm.get('verified')">
+                    Disponibilite de l'utilisateur :
+                  </mat-slide-toggle>
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <ul>
+                    <li *ngFor="let role of roles">
+                      <mat-checkbox (change)="onChangeEventFunc(role.name, $event)">
+                        {{role.name}}
+                      </mat-checkbox>
+                    </li>
+                  </ul>
+                </div>
+
+
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <!-- <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Roles</mat-label>
+                    <mat-select formControlName="roles">
+                      <mat-option [value]="'ROLE_ADMIN'">
+                        Administrateur
+                      </mat-option>
+                      <mat-option [value]="'ROLE_JOUEUR'">
+                        Joueur
+                      </mat-option>
+                      <mat-option [value]="'ROLE_ENTRAINEUR'">
+                        Entraineur
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field> -->
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+
+                  <div class="custom-dropzone" ngx-dropzone
+                       [accept]="'image/*'"
+                       [multiple]="false"
+                       (change)="onSelect($event)"
+                       [ngClass]="{ 'is-invalid is-invalidss':!img }">
+                    <ngx-dropzone-label>
+                      <div>
+                        <h4>Photo de l'utilisateur</h4>
+                        <h3>Obligatoire</h3>
+                      </div>
+                    </ngx-dropzone-label>
+                    <ngx-dropzone-image-preview *ngIf="img"
+                                                ngProjectAs="ngx-dropzone-preview"
+                                                [file]="img"
+                                                [removable]="true"
+                                                (removed)="onRemove(img)">
+                    </ngx-dropzone-image-preview>
+
+                  </div>
+
+                  <!-- <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Importer Image</mat-label>
+                    <ngx-mat-file-input formControlName="photo">
+                    </ngx-mat-file-input>
+                    <mat-icon matSuffix>face</mat-icon>
+                  </mat-form-field> -->
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <button class="msr-3" [disabled]="!utilisateurForm.valid " mat-raised-button color="primary">Submit
+                  </button>
+                  <button type="button" [routerLink]="'/utilisateur/all-utilisateurs'" mat-button>Cancel</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,72 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">
+          <div class="fw-bold p-t-5 font-17">
+            Planification N° {{dialogTitle}}</div>
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="onNoClick()" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+
+    <form class="register-form m-4" [formGroup]="seanceForm" (ngSubmit)="submit()">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="fill">
+            <mat-label>Date Debut</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateDebut" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="seanceForm.get('dateDebut').hasError('required')">
+              SVP selectionnez la date de debut
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="fill">
+            <mat-label>Date Fin</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="dateFin" required>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+            <mat-error *ngIf="seanceForm.get('dateFin').hasError('required')">
+              SVP selectionnez la date de fin
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="fill">
+            <mat-label>Cours</mat-label>
+            <mat-select formControlName="cours" required>
+              <mat-option *ngFor="let cour of coursList" [value]="cour.idCours">
+                {{cour.label}}
+              </mat-option>
+
+            </mat-select>
+            <mat-error *ngIf="seanceForm.get('cours').hasError('required')">
+              Selectionnez un cours
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" (submit)="submit" [disabled]="!seanceForm.valid"
+                    [mat-dialog-close]="planification" (click)="confirmAdd()">Save
+            </button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

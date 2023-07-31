@@ -1,0 +1,112 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Ajouter Séance</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/dashboard/main">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Séance</a>
+            </li>
+            <li class="breadcrumb-item active">Ajouter</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="header">
+            <h2><strong> Informations sur la séance</strong></h2>
+
+          </div>
+          <div class="body">
+            <form class="m-4" [formGroup]="seanceForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Date Debut</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dateHeureDebut" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="seanceForm.get('dateHeureDebut')?.hasError('required')">
+                      SVP selectionnez la date de debut
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Date Fin</mat-label>
+                    <input matInput [matDatepicker]="picker1" formControlName="dateHeureFin" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                    <mat-error *ngIf="seanceForm.get('dateHeureFin')?.hasError('required')">
+                      SVP Selectionnez la date de fin
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Terrain</mat-label>
+                    <mat-select formControlName="terrain" required>
+                      <mat-option *ngFor="let terrain of terrainList" [value]="terrain">
+                        {{terrain.label}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="seanceForm.get('terrain')?.hasError('required')">
+                      SVP Selectionnez un terrain
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Seance planifiée</mat-label>
+                    <mat-select formControlName="planification" required>
+                      <mat-option *ngFor="let planification of seancePlanifieeList" [value]="planification">
+                        Planification N° {{planification?.idPlanification}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="seanceForm.get('planification')?.hasError('required')">
+                      SVP Selectionnez un planification
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Adhérent</mat-label>
+                    <mat-select formControlName="user" required>
+                      <mat-option *ngFor="let user of utilisateurList" [value]="user">
+                        {{user.username}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="seanceForm.get('utilisateur')?.hasError('required')">
+                      SVP selectionnez l'adhérent'
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <button class="msr-3" [disabled]="seanceForm.invalid " mat-raised-button color="primary">Submit
+                  </button>
+                  <button type="button" [routerLink]="'/seance/all-seances'" mat-button>Cancel</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

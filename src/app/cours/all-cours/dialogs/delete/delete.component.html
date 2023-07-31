@@ -1,0 +1,34 @@
+<div class="container">
+  <h3 mat-dialog-title>Etes vous sure?</h3>
+  <div mat-dialog-content>
+    <ul class="clearfix">
+      <li>
+        <p><span class="fw-bold"> ID: </span>{{data.idCours}}</p>
+      </li>
+      <li>
+        <p><span class="fw-bold"> Label: </span>{{data.label}}</p>
+      </li>
+      <li>
+        <p>
+          <span class="fw-bold">Description: </span>{{data.description}}
+        </p>
+      </li>
+      <li>
+        <p>
+          <span class="fw-bold">Duree: </span>{{data.duree}}
+        </p>
+      </li>
+      <li>
+        <p>
+          <span class="fw-bold">nbr Places: </span>{{data.nbrPlaces}}
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div mat-dialog-actions class="mb-1">
+    <button mat-flat-button color="warn" [mat-dialog-close]="1" cdkFocusInitial>
+      Delete
+    </button>
+    <button mat-flat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+  </div>
+</div>

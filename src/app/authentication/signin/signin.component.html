@@ -1,0 +1,80 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <form class="login100-form validate-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <span class="login100-form-title pb-5">
+          Se connecter
+        </span>
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Nom d'utilisateur</mat-label>
+              <input matInput formControlName="username"/>
+              <mat-icon matSuffix>face</mat-icon>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-12col-lg-12 col-md-12 col-sm-12 mb-2">
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Mot de passe</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+              <a class="show-pwd-icon" href="#" onClick="return false;" matSuffix (click)="hide = !hide"
+                 [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </a>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="flex-sb-m w-full p-t-15 p-b-20">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" value=""> Souviens de moi
+              <span class="form-check-sign">
+                <span class="check"></span>
+              </span>
+            </label>
+          </div>
+          <div>
+            <a class="txt1" routerLink="/authentication/forgot-password">Mot de passe oublié ?</a>
+          </div>
+        </div>
+        <div class="container-login100-form-btn">
+          <button mat-flat-button color="primary" class="login100-form-btn" type="submit">
+            Se connecter
+          </button>
+        </div>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+
+        <div class="text-center p-t-30 p-b-20">
+          <span class="txt3">
+            Vous n'avez pas encore de compte ?
+             <a routerLink="/authentication/signup">
+               S'inscrire
+             </a>
+          </span>
+        </div>
+
+        <div class="text-center font-bold p-t-30 p-b-20">
+          V.{{appVersion}}
+        </div>
+        <!--        <div class="login100-form-social flex-c-m">-->
+        <!--          <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">-->
+        <!--            <i class="fab fa-facebook-f"></i>-->
+        <!--          </a>-->
+        <!--          <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">-->
+        <!--            <i class="fab fa-twitter"></i>-->
+        <!--          </a>-->
+        <!--        </div>-->
+      </form>
+
+      <div class="login100-more" style="background-image: url('assets/images/loginPhoto.jpg');">
+        <div>
+          <span class="login100-form-title font-bold p-b-30">
+          Tennis Academy
+        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

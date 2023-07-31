@@ -1,0 +1,106 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <!-- <img [src]="terrain.photo.mediaURL ? IMG_BASE_URL + terrain.photo.mediaURL : '../assets/images/terrain.jpeg'"
+         alt="avatar"> -->
+        <div class="modal-about">
+          <div class="fw-bold p-t-5 font-17">
+            {{dialogTitle}}</div>
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="onNoClick()" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+
+    <form class="register-form m-4" [formGroup]="terrainForm" (ngSubmit)="submit()">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label>Label du Terrain</mat-label>
+            <input matInput formControlName="label" required>
+            <mat-error *ngIf="terrainForm.get('label').hasError('required')">
+              Le label est obligatoire
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="outline">
+            <mat-label>Type du Terrain</mat-label>
+            <mat-select formControlName="type" required>
+              <mat-option [value]="'dure'">
+                Terrain dur
+              </mat-option>
+              <mat-option [value]="'terre'">
+                Terrain terre battue
+              </mat-option>
+              <mat-option [value]="'Gazon'">
+                Terrain Gazon
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="terrainForm.get('type').hasError('required')">
+              Le type est obligatoire
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2" style="padding: 8px;">
+
+          <mat-slide-toggle formControlName="enable" [checked]="terrainForm.get('enable')">
+            Disponibilite du Terrain :
+          </mat-slide-toggle>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+
+          <div class="custom-dropzone" ngx-dropzone
+               [accept]="'image/*'"
+               [multiple]="false"
+               (change)="onSelect($event)"
+               [ngClass]="{ 'is-invalid is-invalidss':!img }">
+            <ngx-dropzone-label>
+              <div>
+                <h4>Photo du Terrain</h4>
+                <h3>Obligatoire</h3>
+              </div>
+            </ngx-dropzone-label>
+            <ngx-dropzone-image-preview *ngIf="img"
+                                        ngProjectAs="ngx-dropzone-preview"
+                                        [file]="img"
+                                        [removable]="true"
+                                        (removed)="onRemove(img)">
+            </ngx-dropzone-image-preview>
+
+          </div>
+
+          <!-- <mat-form-field class="example-full-width mb-3" appearance="fill">
+            <mat-label>Importer Image</mat-label>
+            <ngx-mat-file-input formControlName="photo">
+            </ngx-mat-file-input>
+            <mat-icon matSuffix>face</mat-icon>
+          </mat-form-field> -->
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" [type]="submit" [disabled]="!terrainForm.valid"
+                    [mat-dialog-close]="terrain" (click)="confirmAdd()">Save
+            </button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

@@ -1,0 +1,120 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <form class="login100-form validate-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <span class="login100-form-title p-b-30">
+          Créer un compte
+        </span>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Prénom</mat-label>
+          <input matInput formControlName="prenom" required>
+          <mat-icon matSuffix>face</mat-icon>
+          <mat-error *ngIf="loginForm.get('prenom').hasError('required')">
+            Prénom obligatoire
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput formControlName="nom" required>
+          <mat-icon matSuffix>face</mat-icon>
+          <mat-error *ngIf="loginForm.get('nom').hasError('required')">
+            Nom est obligatoire
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Adresse</mat-label>
+          <input matInput formControlName="addresse" required>
+          <mat-icon matSuffix>face</mat-icon>
+          <mat-error *ngIf="loginForm.get('addresse').hasError('required')">
+            Adresse est obligatoire
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Téléphone</mat-label>
+          <input matInput formControlName="telephone" type="number" required>
+          <mat-icon matSuffix>face</mat-icon>
+          <mat-error *ngIf="loginForm.get('telephone').hasError('required')">
+            Téléphone obligatoire
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Nom d'utilisateur</mat-label>
+          <input matInput formControlName="username" required>
+          <mat-icon matSuffix>face</mat-icon>
+          <mat-error *ngIf="loginForm.get('username').hasError('required')">
+            Nom d'utilisateur est obligatoire
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required>
+          <mat-icon matSuffix>mail</mat-icon>
+          <mat-error *ngIf="loginForm.get('email').hasError('required') || loginForm.get('email').touched">
+            s'il vous plait Entrer une adresse email valide
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Mot de passe</mat-label>
+          <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" required>
+          <mat-icon matSuffix (click)="hide = !hide">
+            {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="loginForm.get('password').hasError('required')">
+            Mot de passe est obligatoire
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('password').errors?.minlength">
+            Minimum 6 caracteres
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Confirmer Mot de passe</mat-label>
+          <input matInput formControlName="cpassword" [type]="chide ? 'password' : 'text'" required>
+          <mat-icon matSuffix (click)="chide = !chide">
+            {{chide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <mat-error *ngIf="loginForm.get('cpassword').hasError('required')">
+            La confirmation Mot de passe est obligatoire
+          </mat-error>
+          <mat-error *ngIf="loginForm.get('cpassword').errors?.MustMatch">
+            Password et confirm password ne correspond pas
+          </mat-error>
+        </mat-form-field>
+        <div class="align-center justify-content-center display-flex w-full p-t-15 p-b-20">
+          <div>
+            <span>Déjà enregistré ? <a routerLink="/authentication/signin">
+                Se connecter
+              </a></span>
+          </div>
+        </div>
+        <div class="container-login100-form-btn">
+          <button mat-flat-button color="primary" class="login100-form-btn" type="submit">
+            Créer un compte
+          </button>
+        </div>
+        <div class="text-center font-bold p-t-30 p-b-20">
+          V.{{appVersion}}
+        </div>
+        <!--        <div class="text-center p-t-30 p-b-20">
+                  <span class="txt2">
+                    or sign up using
+                  </span>
+                </div>
+                <div class="login100-form-social flex-c-m">
+                  <a href="#" class="login100-form-social-item flex-c-m bg1 m-r-5">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#" class="login100-form-social-item flex-c-m bg2 m-r-5">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                </div>-->
+
+      </form>
+
+      <div class="login100-more" style="background-image: url('assets/images/loginPhoto.jpg');">
+        <div>
+          <span class="login100-form-title font-bold p-b-30">
+          Tennis Academy
+        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Ajouter Cours</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/dashboard/main">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Cours</a>
+            </li>
+            <li class="breadcrumb-item active">Ajouter</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="header">
+            <h2><strong> Information du Cours</strong></h2>
+
+          </div>
+          <div class="body">
+            <form class="m-4" [formGroup]="coursForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Label du Cours</mat-label>
+                    <input matInput formControlName="label" required>
+                    <mat-error *ngIf="coursForm.get('label').hasError('required')">
+                      Le label est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Description du Cours</mat-label>
+                    <input matInput formControlName="description" required>
+                    <mat-error *ngIf="coursForm.get('description').hasError('required')">
+                      La description est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Duree du cours</mat-label>
+                    <input matInput formControlName="duree" type="number" required>
+                    <mat-error *ngIf="coursForm.get('duree').hasError('required')">
+                      La duree est obligatoire
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+                  <mat-form-field class="example-full-width mb-3" appearance="fill">
+                    <mat-label>Nombres de palces</mat-label>
+                    <input matInput formControlName="nbrPlaces" type="number" required>
+                    <mat-error *ngIf="coursForm.get('nbrPlaces').hasError('required')">
+                      Ajouter la capacite du cours
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+                  <button class="msr-3" [disabled]="!coursForm.valid " mat-raised-button color="primary">Submit</button>
+                  <button type="button"  [routerLink]="'/cours/all-cours'"  mat-button>Cancel</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

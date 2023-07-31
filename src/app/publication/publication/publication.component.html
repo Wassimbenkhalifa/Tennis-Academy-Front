@@ -1,0 +1,35 @@
+<div class="review-block" *ngFor="let publication of publications$ | async; let idx = index">
+  <div class="row">
+    <div class="review-img">
+      <img src="assets/images/user/user1.jpg" alt=""/>
+    </div>
+    <div class="col">
+      <h6 class="m-b-5">
+        <!--                   {{publication.user.prenom}}  {{publication.user.nom}}-->
+        <span class="float-end m-r-10 text-muted">
+                      {{publication.localDateheurePublication}}
+                    </span>
+      </h6>
+      <i class="material-icons">star</i>
+      <i class="material-icons">star</i>
+      <i class="material-icons">star</i>
+      <i class="material-icons">star_half</i>
+      <i class="material-icons">star_border</i>
+      <p class="m-t-15 m-b-15 text-muted">
+        {{publication.text}}
+      </p>
+      <button mat-icon-button class="m-r-10 col-blue">
+        <mat-icon>dns</mat-icon>
+      </button>
+      <button mat-icon-button class="m-r-10 col-red">
+        <mat-icon>thumb_down</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="text-center m-b-5">
+    <a class="b-b-primary text-primary">
+      View all Customer Reviews
+    </a>
+  </div>
+</div>

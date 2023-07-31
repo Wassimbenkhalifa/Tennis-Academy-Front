@@ -1,0 +1,71 @@
+<div class="addContainer">
+  <div class="modalHeader">
+    <div class="editRowModal">
+      <div class="modalHeader clearfix">
+        <div class="modal-about">
+          <div class="fw-bold p-t-5 font-17">
+            {{dialogTitle}}</div>
+        </div>
+      </div>
+    </div>
+    <button mat-icon-button (click)="onNoClick()" aria-label="Close dialog">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content>
+
+    <form class="register-form m-4" [formGroup]="coursForm" (ngSubmit)="submit()">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="fill">
+            <mat-label>Label du Cours</mat-label>
+            <input matInput formControlName="label" required>
+            <mat-error *ngIf="coursForm.get('label').hasError('required')">
+              Le label est obligatoire
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="fill">
+            <mat-label>Description du Cours</mat-label>
+            <input matInput formControlName="description" required>
+            <mat-error *ngIf="coursForm.get('description').hasError('required')">
+              La description est obligatoire
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="fill">
+            <mat-label>Duree du cours</mat-label>
+            <input matInput formControlName="duree" type="number" required>
+            <mat-error *ngIf="coursForm.get('duree').hasError('required')">
+              La duree est obligatoire
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-2">
+          <mat-form-field class="example-full-width mb-3" appearance="fill">
+            <mat-label>Nombres de palces</mat-label>
+            <input matInput formControlName="nbrPlaces" type="number" required>
+            <mat-error *ngIf="coursForm.get('nbrPlaces').hasError('required')">
+              Ajouter la capacite du cours
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-2">
+          <div class="example-button-row">
+            <button mat-raised-button color="primary" [type]="submit" [disabled]="!coursForm.valid"
+                    [mat-dialog-close]="cours" (click)="confirmAdd()">Save
+            </button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" tabindex="-1">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
